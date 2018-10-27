@@ -15,7 +15,3 @@ Route::get('/', function () {
     //return 'hello world';
     return view('welcome');
 });
-Route::get('/test', function () {
-    //return 'hello world';
-    return view('welcome');
-});
