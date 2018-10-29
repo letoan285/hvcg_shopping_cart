@@ -15,3 +15,8 @@ Route::get('/', function () {
     //return 'hello world';
     return view('welcome');
 });
+
+Route::get('/admin', function () {
+    //return 'hello world';
+    return view('admin.dashboard');
+});
