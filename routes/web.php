@@ -15,8 +15,6 @@ Route::get('/', function () {
     //return 'hello world';
     return view('welcome');
 });
+Auth::routes();
 
-Route::get('/admin', function () {
-    //return 'hello world';
-    return view('admin.dashboard');
-});
+Route::get('/home', 'HomeController@index')->name('home');
