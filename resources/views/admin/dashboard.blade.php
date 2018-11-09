@@ -23,6 +23,13 @@
             Footer
         </div>
     </div>
- 
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+     $("#btn").click(function(){
+        alert('Hello laravel');
+     })
+ </script>
 @endsection

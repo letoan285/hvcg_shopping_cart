@@ -57,21 +57,21 @@
                   <a href="#" class="nav-link">
                     <i class="nav-icon fa fa-pie-chart"></i>
                     <p>
-                      Charts
+                      Quan Ly Danh Muc
                       <i class="right fa fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="../charts/chartjs.html" class="nav-link">
+                      <a href="{{route('categories.index')}}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
-                        <p>ChartJS</p>
+                        <p>Danh Sach</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="../charts/flot.html" class="nav-link">
+                    <a href="{{route('categories.create')}}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
-                        <p>Flot</p>
+                        <p>Thêm mới</p>
                       </a>
                     </li>
                     <li class="nav-item">
@@ -86,21 +86,21 @@
                   <a href="#" class="nav-link">
                     <i class="nav-icon fa fa-tree"></i>
                     <p>
-                      UI Elements
+                      Quản lý sản phẩm
                       <i class="fa fa-angle-left right"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="../UI/general.html" class="nav-link">
+                      <a href="{{route('products.index')}}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
-                        <p>General</p>
+                        <p>Danh sách</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="../UI/icons.html" class="nav-link">
+                        <a href="{{route('products.create')}}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
-                        <p>Icons</p>
+                        <p>Thêm mới</p>
                       </a>
                     </li>
                     <li class="nav-item">
