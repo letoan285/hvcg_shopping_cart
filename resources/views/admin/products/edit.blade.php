@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 @section('title', 'Edit Product')
+
+@section('style')
+	<link rel="stylesheet" href="{{asset('select2/select2.min.css')}}">
+	<style>
+
+		.select2-selection__choice {
+			color: red !important;
+		}
+	</style>
+@endsection
+
+
 @section('content')
 	<div class="card">
 		<div class="card-header">
@@ -60,6 +72,18 @@
 			
 			</select>
 		</div>
+
+		<div class="form-group">
+				<label> Thẻ tags</label>
+				<select name="tag[]" class="form-control select2-option" multiple>
+					@foreach ($tags as $tag)
+						<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+					@endforeach
+				
+				</select>
+			</div>
+
+
 		<div class="form-group">
 			<label> Trang thai</label>
 			<input type="number" class="form-control" name="status" placeholder="Status...">
@@ -70,7 +94,19 @@
 		</div>
 		
 		<div class="form-group">
-			<input type="submit" class="btn btn-success" value="Create New" />
+			<input type="submit" class="btn btn-success" value="Cập nhật" />
 		</div>
 	</form>
+@endsection
+
+@section('script')
+	<script src="{{ asset('select2/select2.min.js') }}"></script>
+
+	<script>
+	$(document).ready(function(){
+		$(".select2-option").select2();
+		$('.select2-option').select2().val({{json_encode($product->tags()->pluck('id'))}}).trigger('change');
+
+	})
+	</script>
 @endsection

@@ -42,3 +42,6 @@ Route::get('products/{id}/edit', 'ProductController@edit')->name('products.edit'
 Route::post('products/{id}', 'ProductController@update')->name('products.update');
 
 Route::get('products/{id}', 'ProductController@show')->name('products.show');
+
+
+Route::get('products/{id}/destroy', 'ProductController@destroy')->name('products.destroy');

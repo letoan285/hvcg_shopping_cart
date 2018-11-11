@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 @section('title', 'Create Product')
+@section('style')
+	<link rel="stylesheet" href="{{asset('select2/select2.min.css')}}">
+	<style>
+
+		.select2-selection__choice {
+			color: red !important;
+		}
+	</style>
+@endsection
 @section('content')
 	<div class="card">
 		<div class="card-header">
@@ -52,6 +61,17 @@
 			
 			</select>
 		</div>
+
+		<div class="form-group">
+				<label> Thẻ tags</label>
+				<select name="tag[]" class="form-control select2-option" multiple>
+					@foreach ($tags as $tag)
+						<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+					@endforeach
+				
+				</select>
+			</div>
+
 		<div class="form-group">
 			<label> Trang thai</label>
 			<input type="number" class="form-control" name="status" placeholder="Status...">
@@ -65,4 +85,14 @@
 			<input type="submit" class="btn btn-success" value="Create New" />
 		</div>
 	</form>
+@endsection
+
+@section('script')
+	<script src="{{ asset('select2/select2.min.js') }}"></script>
+
+	<script>
+	$(document).ready(function(){
+		$(".select2-option").select2();
+	})
+	</script>
 @endsection
