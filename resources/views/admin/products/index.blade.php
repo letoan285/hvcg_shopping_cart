@@ -40,7 +40,7 @@
 							<td>{{ $product->status === 1 ? 'Hien thi' : 'Khong hien thi' }}</td>
 							<td>
 								<a class ="btn btn-sm btn-info" href="{{route('products.edit', $product->id)}}"><i class="fa fa-pencil"></i></a>
-								<a class="btn btn-sm btn-danger" href=""><i class="fa fa-times"></i> </a>
+								<a class="btn btn-sm btn-danger" onclick="confirmDelete('{{ route('products.destroy', $product->id) }} ');" href="javascript:;"><i class="fa fa-times"></i> </a>
 							</td>
 						</tr>
 						@endforeach
@@ -51,3 +51,38 @@
 </div>
 
 @endsection
+
+@section('script')
+
+<script src="{{ asset('plugins/bootbox/bootbox.min.js')}}"></script>
+<script>
+
+	function confirmDelete(url){
+		bootbox.confirm({
+			message: "Bạn có chắc chắn xóa không ?",
+				buttons: {
+						confirm: {
+								label: 'Chắc chắn',
+								className: 'btn-success'
+						},
+						cancel: {
+								label: 'Không !',
+								className: 'btn-danger'
+						}
+				},
+				callback: function (result) {
+					if(result) {
+						window.location.href = url;
+						console.log('ban con firm')
+					}
+				}
+		});
+	}
+
+
+
+</script>
+
+@endsection
+
+{{-- {{route('products.destroy', $product->id)}} --}}
