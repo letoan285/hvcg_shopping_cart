@@ -1,9 +1,25 @@
 @extends('layouts.admin')
 @section('title', ' Product Page')
+@section('style')
+<style>
+	.relative {
+		position: relative;
+
+	}
+	.relative > input {
+		width: 100% !important;
+	}
+	.absolute {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+</style>
+@endsection
 @section('content')
   <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Danh sách danh mục</h3>
+          <h3 class="card-title">Danh sách sản phẩm</h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fa fa-minus"></i></button>
@@ -13,7 +29,29 @@
         </div>
         <div class="card-body">
 					<div class="row mb-2 ml-1">
+						<div class="col-4">
 							<a class="btn btn-success" href="products/create"><i class="glyphicon-plus" >Tạo sản phẩm mới</i></a> 
+						</div>
+						<div class="col-8">
+							<form method="get" class="form-inline row" id="search-form">
+								<div class="col-4">
+									
+									<select name="pageSize" id="pageSize" class="form-control">
+										<option value="10">10</option>
+										<option value="20">20</option>
+										<option value="50">50</option>
+										<option value="100">100</option>
+									</select>
+							
+								</div>
+								<div class="col-8">
+									<div class="relative">
+										<input type="text" class="form-control" name="keyword" value="{{ $keyword }}">
+										<button type="submit" class="btn btn-info absolute" ><i class="fa fa-search"></i></button>
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
 				<table class="table table-bordered table-hover table-stripped">
 					<thead>
@@ -80,8 +118,13 @@
 	}
 
 
-
+	$(document).ready(function(){
+		$("#pageSize").on('change', function(){
+			$("#search-form").submit();
+		});
+	})
 </script>
+
 
 @endsection
 
