@@ -13,11 +13,22 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $tags = Tag::all();
+
         $pageSize = $request->pageSize ?? 10;
 
-        $products = DB::table('products')->orderBy('id', 'desc')->paginate($pageSize);
-        
-        return view('admin.products.index', ['products'=>$products, 'tags'=>$tags]);
+        $keyword = $request->keyword;
+        $path = "";
+        if(!$keyword){
+            $products = Product::orderBy('id', 'desc')->paginate($pageSize);
+            $path = "?pageSize=$pageSize";
+        }else {
+            $products = Product::where('name','like', "%$keyword%")->paginate($pageSize);
+            $path = "?pageSize=$pageSize&keyword=$keyword";
+        }
+
+        $products->withPath($path);
+
+        return view('admin.products.index', ['products'=>$products, 'tags'=>$tags, 'keyword'=>$keyword]);
     }
 
     public function create()
@@ -107,6 +118,12 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $product->delete();
+
+        $product->tags()->detach();
+
+        if( file_exists($product->image) ){
+            unlink(public_path($product->image));
+        }
 
         return redirect()->back();
     }

@@ -834,6 +834,7 @@ h2.title:before{
 }
 .features_items > h2 {
   border-bottom: 1px solid #FE980F;
+  padding: 20px;
 }
 
 

@@ -9,20 +9,22 @@ Sản phẩm nổi bật
 @endsection
 
 @section('content')
+@foreach ($products as $product)
+    
 
 <div class="col-sm-4">
     <div class="product-image-wrapper">
         <div class="single-products">
                 <div class="productinfo text-center">
-                    <img src="{{ asset('frontend/images/home/product1.jpg') }}" alt="" />
-                    <h2>$56</h2>
-                    <p>Easy Polo Black Edition</p>
+                    <img src="{{ asset($product->image) }}" alt="" />
+                    <h2> {{$product->price}} VND</h2>
+                    <p>{{str_limit($product->name, 20)}}</p>
                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
                 <div class="product-overlay">
                     <div class="overlay-content">
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
+                        <h2>{{$product->price}} VND</h2>
+                        <p>{{str_limit($product->name, 20)}}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                 </div>
@@ -35,7 +37,7 @@ Sản phẩm nổi bật
         </div>
     </div>
 </div>
-
+@endforeach
 @endsection
 
 @section('tab-content')
