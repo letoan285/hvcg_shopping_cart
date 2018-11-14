@@ -82,4 +82,15 @@ class CartController extends Controller
     {
         //
     }
+
+    public function addToCart(Cart $cart, $id)
+    {
+        // array format
+        Cart::add(array(
+            'customer_id' => 1,
+            'shipping_id' => 2,
+            'payment_id' => 4,
+
+        ));
+    }
 }
