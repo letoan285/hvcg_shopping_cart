@@ -5,7 +5,7 @@
 
 
 @section('content-title')
-Sản phẩm nổi bật
+Danh muc {{ $category->name }}
 @endsection
 
 @section('content')
